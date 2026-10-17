@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FitBro Fitness</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0b1020;color:white;font-family:Arial,sans-serif}
+header{padding:24px 18px;background:linear-gradient(135deg,#00d084,#007a67);border-radius:0 0 25px 25px}
+header h1{font-size:32px;margin:0}
+header p{margin-bottom:0}
+main{padding:18px;max-width:650px;margin:auto}
+h2{color:#00e69a}
+.card{background:#171f33;padding:18px;border-radius:18px;margin:14px 0;border:1px solid #28344b}
+button{background:#00d084;color:#06130e;border:0;padding:12px 16px;border-radius:12px;font-weight:bold;cursor:pointer;margin-top:8px}
+select{padding:10px;border-radius:8px;background:#222d42;color:white;border:1px solid #526078}
+.progress{height:10px;background:#30394d;border-radius:10px;overflow:hidden}
+#bar{height:100%;width:0;background:#00d084;transition:width .4s}
+footer{text-align:center;padding:24px;color:#9ba8bd}
+</style>
+</head>
+<body>
+<header>
+<h1>💪 FitBro</h1>
+<p>Build strength. Build confidence. Be unstoppable.</p>
+</header>
+<main>
+<div class="card">
+<h2>🎯 Your Fitness Goal</h2>
+<select id="goal">
+<option>Build Muscle</option>
+<option>Lose Fat</option>
+<option>Stay Fit</option>
+<option>Improve Strength</option>
+<option>Increase Flexibility</option>
+</select>
+<button onclick="saveGoal()">Save Goal</button>
+<p id="goalMsg">Choose your fitness goal!</p>
+</div>
+
+<div class="card">
+<h2>🔥 Daily Workout</h2>
+<p>Complete these beginner-friendly exercises at your own pace.</p>
+<p>🏃 Warm-up — 5 minutes</p>
+<p>💪 Squats — 10 repetitions</p>
+<p>🧱 Wall push-ups — 10 repetitions</p>
+<p>🧘 Stretching — 5 minutes</p>
+<button onclick="completeWorkout()">Complete Workout ✓</button>
+<p id="workMsg">Your daily progress starts here.</p>
+</div>
+
+<div class="card">
+<h2>📈 Your Progress</h2>
+<div class="progress"><div id="bar"></div></div>
+<p id="count">0 workouts completed</p>
+<button onclick="resetProgress()">Reset Progress</button>
+</div>
+
+<div class="card">
+<h2>💧 Hydration Reminder</h2>
+<p>Drink water regularly throughout the day.</p>
+<button onclick="water()">I drank water 💧</button>
+<p id="waterMsg">Water check-ins: 0</p>
+</div>
+</main>
+<footer>FitBro © 2026 · Your fitness, your journey.</footer>
+<script>
+let workouts=Number(localStorage.getItem("fitWorkouts")||0);
+let waters=0;
+function update(){
+document.getElementById("count").textContent=workouts+" workouts completed";
+document.getElementById("bar").style.width=(workouts%11)*10+"%";
+}
+function saveGoal(){
+let g=document.getElementById("goal").value;
+localStorage.setItem("fitGoal",g);
+document.getElementById("goalMsg").textContent="Your goal: "+g+" 💪";
+}
+function completeWorkout(){
+workouts++;
+localStorage.setItem("fitWorkouts",workouts);
+update();
+document.getElementById("workMsg").textContent="Awesome! Workout completed 🎉";
+}
+function resetProgress(){
+workouts=0;
+localStorage.setItem("fitWorkouts",0);
+update();
+document.getElementById("workMsg").textContent="Progress reset.";
+}
+function water(){
+waters++;
+document.getElementById("waterMsg").textContent="Water check-ins: "+waters;
+}
+let saved=localStorage.getItem("fitGoal");
+if(saved)document.getElementById("goal").value=saved;
+update();
+</script>
+</body>
+</html>
