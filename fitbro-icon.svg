@@ -1,0 +1,10 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#121212"/>
+  <g fill="none" stroke="#39FF14" stroke-width="26" stroke-linecap="round">
+    <path d="M145 180v152 M105 215v82 M367 180v152 M407 215v82 M145 256h222"/>
+  </g>
+  <text x="256" y="285" text-anchor="middle"
+        font-family="Arial,sans-serif" font-size="100"
+        font-weight="900" fill="#39FF14">FB</text>
+</svg>
