@@ -1,0 +1,19 @@
+
+{
+  "id": "/",
+  "name": "FitBro Fitness",
+  "short_name": "FitBro",
+  "description": "Fitness workouts, exercise tips and progress tracking.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#39FF14",
+  "icons": [
+    {
+      "src": "/fitbro-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
